@@ -1,1 +1,59 @@
-[[{"empId":"1001","beverage":"Orage-Juice","qty":"10","date":"2021-06-28T06:28:42.158Z"}],[{"empId":"1002","beverage":"Mango-Juice","qty":"20","date":"2021-06-28T06:29:32.367Z"}],[{"empId":"1003","beverage":"Badaam-Shake","qty":"10","date":"2021-06-28T06:52:02.510Z"}],[{"empId":"1005","beverage":"[]","qty":"3","date":"2021-06-28T06:56:40.380Z"}],[{"empId":"1006","beverage":"MixFruit-Juice","qty":"10.1","date":"2021-06-28T06:57:21.390Z"}],[{"empId":"1007","beverage":"MixVeg-Juice","qty":"12","date":"2021-06-28T07:01:25.141Z"}],[{"empId":"1007","beverage":"Guvava-Juice","qty":"3","date":"2021-06-28T07:02:10.372Z"}]]
+[
+  [
+    {
+      "empId": "1001",
+      "beverage": "Orange-Juice",
+      "qty": "10",
+      "date": "2021-06-28T06:28:42.158Z"
+    }
+  ],
+  [
+    {
+      "empId": "1002",
+      "beverage": "Mango-Juice",
+      "qty": "20",
+      "date": "2021-06-28T06:29:32.367Z"
+    }
+  ],
+  [
+    {
+      "empId": "1003",
+      "beverage": "Badaam-Shake",
+      "qty": "10",
+      "date": "2021-06-28T06:52:02.510Z"
+    }
+  ],
+  
+  [
+    {
+      "empId": "1006",
+      "beverage": "MixFruit-Juice",
+      "qty": "10",
+      "date": "2021-06-28T06:57:21.390Z"
+    }
+  ],
+  [
+    {
+      "empId": "1007",
+      "beverage": "MixVeg-Juice",
+      "qty": "12",
+      "date": "2021-06-28T07:01:25.141Z"
+    }
+  ],
+  [
+    {
+      "empId": "1007",
+      "beverage": "Guvava-Juice",
+      "qty": "3",
+      "date": "2021-06-28T07:02:10.372Z"
+    }
+  ],
+  [
+    {
+      "empId": "1010",
+      "beverage": "Badam-Milk",
+      "qty": "2",
+      "date": "2021-06-28T11:18:19.984Z"
+    }
+  ]
+]
