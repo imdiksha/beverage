@@ -33,13 +33,16 @@ const date = getIndexValue(getIndex("--date"));
 
 const FilteredList = function (records) {
   if (employeeID.length) {
-    return records.filter((record) => record.empId == employeeID);
-  } else if (quantity.length) {
-    return records.filter((record) => record.qty== quantity);
-  } else if (beverageName.length) {
-    return records.filter((record) => record.beverage == beverageName);
-  } else if (date.length) {
-    return records.filter((record) => record.date == date);
+    records = records.filter((record) => record.empId == employeeID);
+  }
+  if (quantity.length) {
+    records = records.filter((record) => record.qty == quantity);
+  }
+  if (beverageName.length) {
+    records = records.filter((record) => record.beverage == beverageName);
+  }
+  if (date.length) {
+    records = records.filter((record) => record.date == date);
   }
   return records;
 };
@@ -50,14 +53,13 @@ if (command == "--save") {
     Number.isInteger(Number(employeeID)) &&
     typeof beverageName == "string"
   ) {
-    const newRecord = [
-      {
-        empId: employeeID,
-        beverage: beverageName,
-        qty: quantity,
-        date: curDate,
-      },
-    ];
+    const newRecord = {
+      empId: employeeID,
+      beverage: beverageName,
+      qty: quantity,
+      date: curDate,
+    };
+
     writeRecords(updateRecords(newRecord));
   } else {
     console.log("Oops! Invalid Input");
