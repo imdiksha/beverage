@@ -16,7 +16,7 @@ const updateRecords = function (newEntry) {
 };
 
 const getIndex = function (option) {
-  return process.argv.indexOf(option);
+  return process.argv.lastIndexOf(option);
 };
 
 const getIndexValue = function (index) {
@@ -42,7 +42,7 @@ const FilteredList = function (records) {
     records = records.filter((record) => record.beverage == beverageName);
   }
   if (date.length) {
-    records = records.filter((record) => record.date == date);
+    records = records.filter((record) => record.date==date);
   }
   return records;
 };
