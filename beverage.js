@@ -15,54 +15,53 @@ const updateRecords = function (newEntry) {
   return JSON.stringify(feededRecords);
 };
 
-const date = new Date();
-const [input,firstOpt, beverage ,secondOpt, qty, thirdOpt, empId,FourthOpt,inputDate] = process.argv.slice(2);
-if (input=="--save")
-{
-    if (
-        Number.isInteger(Number(qty)) &&
-        Number.isInteger(Number(empId)) &&
-        typeof beverage == "string"
-      ) {
-        const newRecord = [
-          { empId: empId, beverage: beverage, qty: qty, date: date },
-        ];
-        writeRecords(updateRecords(newRecord));
-      } else {
-        console.log("Oops! Invalid Input");
-      }     
+const getIndex = function (option) {
+  return process.argv.indexOf(option);
+};
+
+const getIndexValue = function (index) {
+  return index > -1 ? process.argv[index + 1] : "";
+};
+
+const command = process.argv[2];
+
+const curDate = new Date();
+const beverageName = getIndexValue(getIndex("--beverage"));
+const quantity = getIndexValue(getIndex("--qty"));
+const employeeID = getIndexValue(getIndex("--empId"));
+const date = getIndexValue(getIndex("--date"));
+
+const FilteredList = function (records) {
+  if (employeeID.length) {
+    return records.filter((record) => record.empId == employeeID);
+  } else if (quantity.length) {
+    return records.filter((record) => record.qty== quantity);
+  } else if (beverageName.length) {
+    return records.filter((record) => record.beverage == beverageName);
+  } else if (date.length) {
+    return records.filter((record) => record.date == date);
+  }
+  return records;
+};
+
+if (command == "--save") {
+  if (
+    Number.isInteger(Number(quantity)) &&
+    Number.isInteger(Number(employeeID)) &&
+    typeof beverageName == "string"
+  ) {
+    const newRecord = [
+      {
+        empId: employeeID,
+        beverage: beverageName,
+        qty: quantity,
+        date: curDate,
+      },
+    ];
+    writeRecords(updateRecords(newRecord));
+  } else {
+    console.log("Oops! Invalid Input");
+  }
+} else if (command == "--query") {
+  console.log(FilteredList(getRecords()));
 }
-else if (input =="--query")
-{
-   
-  let allRecords = getRecords();
-
-  const checkOptions = function(Option,value)
-  {
-    let list;
-   if (Option  == "--beverage")
-   {
-   allRecords= allRecords.filter(record =>record.beverage == value);
-   }
-   if (Option =="--empId")
-   {
-    allRecords= allRecords.filter(record =>record.empId== value);
-   }
-   if (Option =="--date")
-   {
-    allRecords= allRecords.filter(record =>record.date== value);
-   }
-   if (Option =="--qty")
-   {
-    allRecords= allRecords.filter(record =>record.qty== value);
-   }
-   return allRecords ;
-   };
-
-   checkOptions(firstOpt,beverage);
-   checkOptions(secondOpt,qty);
-   checkOptions(thirdOpt,empId);
-   checkOptions(FourthOpt,inputDate);
-   console.log(allRecords);
- }
- 
